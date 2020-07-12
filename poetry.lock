@@ -1,5 +1,5 @@
 [[package]]
-category = "main"
+category = "dev"
 description = "A small Python module for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
 name = "appdirs"
 optional = false
@@ -30,16 +30,16 @@ docs = ["sphinx", "zope.interface"]
 tests = ["coverage", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "zope.interface"]
 
 [[package]]
-category = "main"
+category = "dev"
 description = "Cross-platform colored terminal text."
-marker = "platform_system == \"Windows\" or sys_platform == \"win32\""
+marker = "sys_platform == \"win32\" or platform_system == \"Windows\""
 name = "colorama"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 version = "0.4.3"
 
 [[package]]
-category = "main"
+category = "dev"
 description = "Distribution utilities"
 name = "distlib"
 optional = false
@@ -47,7 +47,7 @@ python-versions = "*"
 version = "0.3.1"
 
 [[package]]
-category = "main"
+category = "dev"
 description = "A platform independent file lock."
 name = "filelock"
 optional = false
@@ -63,7 +63,7 @@ python-versions = ">=3.5"
 version = "8.4.0"
 
 [[package]]
-category = "main"
+category = "dev"
 description = "Core utilities for Python packages"
 name = "packaging"
 optional = false
@@ -75,7 +75,7 @@ pyparsing = ">=2.0.2"
 six = "*"
 
 [[package]]
-category = "main"
+category = "dev"
 description = "plugin and hook calling mechanisms for python"
 name = "pluggy"
 optional = false
@@ -86,7 +86,7 @@ version = "0.13.1"
 dev = ["pre-commit", "tox"]
 
 [[package]]
-category = "main"
+category = "dev"
 description = "library with cross-python path, ini-parsing, io, code, log facilities"
 name = "py"
 optional = false
@@ -94,7 +94,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 version = "1.9.0"
 
 [[package]]
-category = "main"
+category = "dev"
 description = "Python parsing module"
 name = "pyparsing"
 optional = false
@@ -124,7 +124,7 @@ checkqa-mypy = ["mypy (v0.761)"]
 testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "requests", "xmlschema"]
 
 [[package]]
-category = "main"
+category = "dev"
 description = "Python 2 and 3 compatibility utilities"
 name = "six"
 optional = false
@@ -132,7 +132,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
 version = "1.15.0"
 
 [[package]]
-category = "main"
+category = "dev"
 description = "Python Library for Tom's Obvious, Minimal Language"
 name = "toml"
 optional = false
@@ -140,7 +140,7 @@ python-versions = "*"
 version = "0.10.1"
 
 [[package]]
-category = "main"
+category = "dev"
 description = "tox is a generic virtualenv management and test command line tool"
 name = "tox"
 optional = false
@@ -162,7 +162,7 @@ docs = ["sphinx (>=2.0.0)", "towncrier (>=18.5.0)", "pygments-github-lexers (>=0
 testing = ["freezegun (>=0.3.11)", "pathlib2 (>=2.3.3)", "pytest (>=4.0.0)", "pytest-cov (>=2.5.1)", "pytest-mock (>=1.10.0)", "pytest-xdist (>=1.22.2)", "pytest-randomly (>=1.0.0)", "flaky (>=3.4.0)", "psutil (>=5.6.1)"]
 
 [[package]]
-category = "main"
+category = "dev"
 description = "Virtual Python Environment builder"
 name = "virtualenv"
 optional = false
@@ -188,7 +188,7 @@ python-versions = "*"
 version = "0.2.5"
 
 [metadata]
-content-hash = "db6e08d5432323643506f2973bc95f5f0bdcf6f01c16a9df991b745045bfe11c"
+content-hash = "246a81737ddb29b27d135e7cfa5e7ded36d53f0f7f694a199e9dadda2144f27c"
 python-versions = "^3.8"
 
 [metadata.files]
