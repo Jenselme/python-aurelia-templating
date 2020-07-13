@@ -6,6 +6,7 @@ authors = ["Julien Enselme <jenselme@jujens.eu>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+beautifulsoup4 = "^4.9.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
