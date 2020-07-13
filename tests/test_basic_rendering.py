@@ -1,4 +1,5 @@
 import pytest
+from bs4 import BeautifulSoup
 
 from aurelia_templating import render_string
 
@@ -14,21 +15,25 @@ def test_no_syntax():
 @pytest.mark.parametrize(
     "template,context,expected",
     [
-        ("Hi ${name}", {"name": "Julien"}, "Hi Julien\n"),
-        (
-            "Hi ${name}, how are you ${name}?",
-            {"name": "Julien"},
-            "Hi Julien, how are you Julien?\n",
-        ),
-        ("Hi ${name}", {}, "Hi \n"),
+        ("Hi ${name}", {"name": "Julien"}, "Hi Julien"),
+        ("Hi ${name}, how are you ${name}?", {"name": "Julien"}, "Hi Julien, how are you Julien?",),
+        ("Hi ${name}", {}, "Hi "),
         (
             "Hi ${name1} and ${name2}!",
             {"name1": "Julien", "name2": "Pierre"},
-            "Hi Julien and Pierre!\n",
+            "Hi Julien and Pierre!",
+        ),
+        (
+            """<p class="${cls}">${name}</p>""",
+            {"name": "Julien", "cls": "my-class"},
+            """<p class="my-class">Julien</p>""",
         ),
     ],
 )
 def test_variable_interpolation(template, context, expected):
     output = render_string(template, context)
 
-    assert output == expected
+    assert (
+        BeautifulSoup(output, features="html.parser",).prettify()
+        == BeautifulSoup(expected, features="html.parser").prettify()
+    )

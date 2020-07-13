@@ -8,7 +8,7 @@ def render_string(template_string: str, context: dict) -> str:
         processed_line = _process_line(line, context)
         output += processed_line + "\n"
 
-    return output
+    return output[:-1]
 
 
 def _process_line(line, context):
