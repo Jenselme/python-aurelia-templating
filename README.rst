@@ -6,8 +6,9 @@ The goal of this library is to render templates written for the `Aurelia <https:
 What I currently plan to support eventually:
 
 - [X] Basic string interpolation.
-- [ ] Support ``if.bind``
+- [X] Support ``if.bind``
 - [ ] Support ``repeat.for="friend of friends"``
+- [ ] Support complex expressions in interpolation and ``if.bind`` like operators (``&&`` and ``||``) and ternaries.
 - [ ] Import components with ``require``
 - [ ] Slot injection
 - [ ] Extended support for ``bind`` with things like ``class.bind``
