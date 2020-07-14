@@ -13,7 +13,7 @@ What I currently plan to support eventually:
 - [ ] Support complex expressions in interpolation and ``if.bind`` like operators (``&&`` and ``||``) and ternaries.
 - [ ] Import components with ``require``
 - [ ] Slot injection
-- [ ] Extended support for ``bind`` with things like ``class.bind``
+- [X] Extended support for ``bind`` with things like ``class.bind``
 - [ ] Support filters: ``${test | format}``
 
 Resources: the `templating basics <https://aurelia.io/docs/templating/basics#introduction>`__ in the documentation.

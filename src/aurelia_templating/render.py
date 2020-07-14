@@ -26,6 +26,7 @@ def _render_node(node, context):
             continue
 
         _interpolate_variables(child, context)
+        _bind_attributes(child, context)
         if hasattr(child, "children"):
             _render_node(child, context)
 
@@ -112,3 +113,24 @@ def _interpolate_variables_in_attributes(node, context):
             else:
                 new_attrs_list.append(attr_value)
         node.attrs[attr_name] = new_attrs_list
+
+
+def _bind_attributes(node, context):
+    if isinstance(node, TERMINATION_NODE_TYPES):
+        return
+
+    attrs_to_delete = set()
+    attrs_to_add = {}
+    for attr_name, attr_values in node.attrs.items():
+        if not attr_name.endswith(".bind"):
+            continue
+
+        attrs_to_delete.add(attr_name)
+        stripped_attr_name = attr_name.replace(".bind", "")
+        variable_name = "".join(attr_values)
+        attrs_to_add[stripped_attr_name] = context.get(variable_name)
+
+    node.attrs.update(attrs_to_add)
+
+    for attr_to_delete in attrs_to_delete:
+        del node.attrs[attr_to_delete]
