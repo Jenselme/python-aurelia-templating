@@ -28,6 +28,11 @@ def test_no_syntax():
             {"name": "Julien", "cls": "my-class"},
             """<p class="my-class">Julien</p>""",
         ),
+        (
+            """<p class="${cls}">${name} ${name}</p>""",
+            {"name": "Julien", "cls": "my-class"},
+            """<p class="my-class">Julien Julien</p>""",
+        ),
     ],
 )
 def test_variable_interpolation(template, context, expected):
