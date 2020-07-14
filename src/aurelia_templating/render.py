@@ -102,7 +102,13 @@ def _interpolate_string(string, variable_name, context):
 def _interpolate_variables_in_attributes(node, context):
     for attr_name, attrs_list in node.attrs.items():
         new_attrs_list = []
+        # attrs_list is a list of all values.
+        # Eg for class="container cls" it will be ["container", "cls"]
         for attr_value in attrs_list:
-            for variable_name in _find_interpolations_in_string(attr_value):
-                new_attrs_list.append(_interpolate_string(attr_value, variable_name, context))
+            interpolations = _find_interpolations_in_string(attr_value)
+            if interpolations:
+                for variable_name in interpolations:
+                    new_attrs_list.append(_interpolate_string(attr_value, variable_name, context))
+            else:
+                new_attrs_list.append(attr_value)
         node.attrs[attr_name] = new_attrs_list

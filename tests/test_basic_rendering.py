@@ -33,6 +33,11 @@ def test_no_syntax():
             {"name": "Julien", "cls": "my-class"},
             """<p class="my-class">Julien Julien</p>""",
         ),
+        (
+            """<p class="${cls} container">${name} ${name}</p>""",
+            {"name": "Julien", "cls": "my-class"},
+            """<p class="my-class container">Julien Julien</p>""",
+        ),
     ],
 )
 def test_variable_interpolation(template, context, expected):
@@ -68,6 +73,11 @@ def test_basic_conditional_rendering(template, context, expected):
             """<div repeat.for="friend of friends">Hello ${friend}</div>""",
             {"friends": ["Julien", "Pierre"]},
             """<div>Hello Julien</div><div>Hello Pierre</div>""",
+        ),
+        (
+            """<div class="my-cls" repeat.for="friend of friends">Hello ${friend}</div>""",
+            {"friends": ["Julien", "Pierre"]},
+            """<div class="my-cls">Hello Julien</div><div class="my-cls">Hello Pierre</div>""",
         ),
     ),
 )
