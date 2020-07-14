@@ -25,6 +25,8 @@ black = "^19.10b0"
 pre-commit = "^2.6.0"
 flake8-isort = "^3.0.1"
 ipython = "^7.16.1"
+pudb = "^2019.2"
+pytest-pudb = "^0.7.0"
 
 [tool.isort]
 multi_line_output = 3
