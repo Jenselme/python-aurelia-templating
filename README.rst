@@ -2,6 +2,8 @@ Python Aurelia Templating
 #########################
 
 The goal of this library is to render templates written for the `Aurelia <https://aurelia.io>`__ JS framework with Python.
+I tried to do a simple implementation mostly to ease coding.
+This implementation is most likely slow on big templates and I don't intend to "fix" this at this time (although PRs are welcomed).
 
 What I currently plan to support eventually:
 
