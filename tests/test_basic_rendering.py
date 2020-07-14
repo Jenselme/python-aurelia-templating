@@ -58,3 +58,23 @@ def test_basic_conditional_rendering(template, context, expected):
         BeautifulSoup(output, features="html.parser",).prettify()
         == BeautifulSoup(expected, features="html.parser").prettify()
     )
+
+
+@pytest.mark.parametrize(
+    "template,context,expected",
+    (
+        ("""<div repeat.for="friend of friends">Hello ${friend}</div>""", {"friends": []}, ""),
+        (
+            """<div repeat.for="friend of friends">Hello ${friend}</div>""",
+            {"friends": ["Julien", "Pierre"]},
+            """<div>Hello Julien</div><div>Hello Pierre</div>""",
+        ),
+    ),
+)
+def test_basic_loop_rendering(template, context, expected):
+    output = render_string(template, context)
+
+    assert (
+        BeautifulSoup(output, features="html.parser",).prettify()
+        == BeautifulSoup(expected, features="html.parser").prettify()
+    )

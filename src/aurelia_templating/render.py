@@ -1,4 +1,5 @@
 import re
+from copy import copy
 
 from bs4 import BeautifulSoup
 from bs4.element import NavigableString, TemplateString
@@ -19,6 +20,11 @@ def _render_node(node, context):
         if was_removed:
             continue
 
+        was_repeated = _repeat_node(child, context)
+        if was_repeated:
+            # The node use to do the repetition doesn't exist any more, moving on.
+            continue
+
         _interpolate_variables(child, context)
         if hasattr(child, "children"):
             _render_node(child, context)
@@ -37,6 +43,36 @@ def _remove_hidden_elements(node, context) -> bool:
         return True
 
     del node["if.bind"]
+    return False
+
+
+def _repeat_node(node, context) -> bool:
+    if isinstance(node, TERMINATION_NODE_TYPES):
+        return False
+
+    loop_expression = node.attrs.get("repeat.for")
+    if loop_expression is None:
+        return False
+
+    if search := re.search(
+        r"^(?P<loop_variable>\w+)\s+of\s+(?P<context_iterator>\w+)", loop_expression
+    ):
+        del node.attrs["repeat.for"]
+        found_variables = search.groupdict()
+        for loop_value in context.get(found_variables["context_iterator"]):
+            loop_context = {
+                **context,
+                found_variables["loop_variable"]: loop_value,
+            }
+            new_node = copy(node)
+            _render_node(new_node, loop_context)
+            node.parent.append(new_node)
+
+        # Remove the existing node, it has been replaced it by the repeated element.
+        node.decompose()
+
+        return True
+
     return False
 
 

@@ -9,7 +9,7 @@ What I currently plan to support eventually:
 
 - [X] Basic string interpolation.
 - [X] Support ``if.bind``
-- [ ] Support ``repeat.for="friend of friends"``
+- [X] Support ``repeat.for="friend of friends"``
 - [ ] Support complex expressions in interpolation and ``if.bind`` like operators (``&&`` and ``||``) and ternaries.
 - [ ] Import components with ``require``
 - [ ] Slot injection
