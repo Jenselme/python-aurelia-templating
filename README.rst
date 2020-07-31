@@ -20,3 +20,28 @@ Resources: the `templating basics <https://aurelia.io/docs/templating/basics#int
 
 I plan to work on this library from time to time.
 If you want to contribute, please feel free to do so.
+
+
+Getting started
+---------------
+
+.. code:: python
+
+    from aurelia_templating import render_string
+
+    render_string('<div>Hello ${name}</div>', {'name': 'Julien'})
+    # Returns ``<div>Hello Julien</div>``
+
+
+Contributing
+------------
+
+This project uses `poetry <https://python-poetry.org/>`__ to manage dependencies and `pre-commit <https://pre-commit.com/>`__ to run pre-commits hooks.
+
+#. Run ``poetry install`` to install dependencies in a venv.
+#. Run ``poetry shell`` to enable this venv.
+#. Run ``pytest`` to launch tests.
+#. Run ``tox`` to run tests against multiple environments.
+#. Install hooks with ``pre-commit install`` and ``pre-commit install -t pre-push``
+
+PRs are welcomed!
